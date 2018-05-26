@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="CustomerService" resourceRoot="${projectDir}" soapui-version="5.0.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="CustomerServiceV1SOAP12" type="wsdl" bindingName="{http://www.example.org/customer/details/v1}CustomerServiceV1SOAP12" soapVersion="1_2" anonymous="optional" definition="http://localhost:7800/customer/getdetails/V1?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:7800/customer/getdetails/V1?wsdl"><con:part><con:url>http://localhost:7800/customer/getdetails/V1?wsdl</con:url><con:content><![CDATA[<!--File CustomerServiceV1.wsdl, application APP_CustomerService_V1-->
+<wsdl:definitions name="CustomerServiceV1" targetNamespace="http://www.example.org/customer/details/v1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://www.example.org/customer/details/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <generatedXSD location="CustomerServiceV1_InlineSchema1.xsd"/>
+        <binding hasEncoding="false" imported="true" name="CustomerServiceV1SOAP12" originalBindingStyle="document"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema>
+      <xsd:import namespace="http://www.example.org/customer/details/v1" schemaLocation="http://localhost:7800/customer/getdetails/V1?xsd=xsd0"></xsd:import>
+    </xsd:schema>
+    <xsd:schema targetNamespace="http://www.example.org/customer/details/v1" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions">
+      <xsd:include schemaLocation="http://localhost:7800/customer/getdetails/V1?xsd=xsd0"/>
+      <xsd:include schemaLocation="http://localhost:7800/customer/getdetails/V1?xsd=xsd1"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="GetCustomerAccountDetails1Request">
+    <wsdl:part element="tns:CustDetailsRequest" name="Request"/>
+  </wsdl:message>
+  <wsdl:message name="GetCustomerAccountDetails1Response">
+    <wsdl:part element="tns:CustDetailsResponse" name="Response"/>
+  </wsdl:message>
+  <wsdl:portType name="CustomerServiceV1">
+    <wsdl:operation name="GetCustomerAccountDetails1">
+      <wsdl:input message="tns:GetCustomerAccountDetails1Request"/>
+      <wsdl:output message="tns:GetCustomerAccountDetails1Response"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CustomerServiceV1SOAP12" type="tns:CustomerServiceV1">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetCustomerAccountDetails1">
+      <soap12:operation soapAction="http://www.example.org/customer/details/v1"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CustomerServiceV1">
+    <wsdl:port binding="tns:CustomerServiceV1SOAP12" name="CustomerServiceV1SOAP12">
+      <soap12:address location="http://localhost:7800/customer/getdetails/V1"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:7800/customer/getdetails/V1?xsd=xsd0</con:url><con:content><![CDATA[<!--File CustomerServiceModel.xsd, application APP_CustomerService_V1-->
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.example.org/customer/details/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:tns="http://www.example.org/customer/details/v1">
+  <xsd:element ibmSchExtn:docRoot="true" name="CustDetailsReq">
+    <xsd:annotation>
+      <xsd:documentation>Request to get cust details</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="1" minOccurs="0" name="Input" type="tns:CustReq"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="CustReq">
+    <xsd:all>
+      <xsd:element maxOccurs="1" minOccurs="0" name="custId" type="xsd:string"/>
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:element ibmSchExtn:docRoot="true" name="CustDetailsRes">
+    <xsd:annotation>
+      <xsd:documentation>Request to get cust details</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="1" minOccurs="0" name="Input" type="tns:CustRes"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="CustRes">
+    <xsd:all>
+      <xsd:element maxOccurs="1" minOccurs="0" name="custId" type="xsd:string"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="fullName" type="xsd:string"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="address" type="xsd:string"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="homePhone" type="xsd:string"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="mobile" type="xsd:string"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="maritalStatus" type="xsd:string"/>
+    </xsd:all>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://localhost:7800/customer/getdetails/V1?xsd=xsd1</con:url><con:content><![CDATA[<!--File CustomerServiceV1_InlineSchema1.xsd, application APP_CustomerService_V1-->
+<xsd:schema targetNamespace="http://www.example.org/customer/details/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://www.example.org/customer/details/v1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <xsd:include schemaLocation="http://localhost:7800/customer/getdetails/V1?xsd=xsd0"/>
+  <xsd:element ibmSchExtn:docRoot="true" name="CustDetailsRequest" type="tns:CustReq"/>
+  <xsd:element ibmSchExtn:docRoot="true" name="CustDetailsResponse" type="tns:CustRes"/>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:7800/customer/getdetails/V1</con:endpoint></con:endpoints><con:operation isOneWay="false" action="http://www.example.org/customer/details/v1" name="GetCustomerAccountDetails1" bindingOperationName="GetCustomerAccountDetails1" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:7800/customer/getdetails/V1</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://www.example.org/customer/details/v1">
+   <soap:Header/>
+   <soap:Body>
+      <v1:CustDetailsRequest>
+         <!--Optional:-->
+         <v1:custId>?</v1:custId>
+      </v1:CustDetailsRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/customer/details/v1/CustomerServiceV1/GetCustomerAccountDetails1Request"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite name="CustomerServiceV1SOAP12 TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetCustomerAccountDetails1 TestCase" searchProperties="true" id="09246456-fdc7-419d-8421-ebf10633cc75"><con:settings/><con:testStep type="properties" name="Properties"><con:settings/><con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:properties><con:property><con:name>CUSTOMER_ID</con:name><con:value>12345678</con:value></con:property></con:properties></con:config></con:testStep><con:testStep type="groovy" name="LoadDataFromCSVFile"><con:settings/><con:config><script>import groovy.xml.StreamingMarkupBuilder
+
+def project = context.testCase.testSuite.project
+def projectRootDirectory=context.expand(project.resourceRoot)
+def csvFile = context.expand('${#Project#DataFile}')  
+def dataFile = projectRootDirectory + csvFile
+
+log.info "Property file to be loaded from: " + dataFile
+
+def file = new File(dataFile)
+def list = []
+def delimiter = ','
+
+log.info "set the environmental config data ... "
+file.readLines().eachWithIndex { line, index ->
+	if (index) {
+        	def lineData = line.split(delimiter).findAll { 'null' != it &amp;&amp; it}
+        	log.info lineData
+        	list &lt;&lt; lineData
+        	def props = testRunner.testCase.getTestStepByName( "Properties" )
+	   	props.setPropertyValue("CUSTOMER_ID", lineData[0])
+    	}
+}</script></con:config></con:testStep><con:testStep type="request" name="GetCustomerAccountDetails1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CustomerServiceV1SOAP12</con:interface><con:operation>GetCustomerAccountDetails1</con:operation><con:request name="GetCustomerAccountDetails1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#Project#ServiceURL}</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://www.example.org/customer/details/v1">
+   <soap:Header/>
+   <soap:Body>
+      <v1:CustDetailsRequest>
+         <!--Optional:-->
+         <v1:custId>${Properties#CUSTOMER_ID}</v1:custId>
+      </v1:CustDetailsRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://www.example.org/customer/details/v1/CustomerServiceV1/GetCustomerAccountDetails1Request" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties><con:property><con:name>CustomerId</con:name><con:value>12345</con:value></con:property><con:property><con:name>ServiceURL</con:name><con:value>http://localhost:7800/customer/getdetails/V1</con:value></con:property><con:property><con:name>DataFile</con:name><con:value>/Props/loc-data.csv</con:value></con:property></con:properties><con:wssContainer/><con:oAuth2ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

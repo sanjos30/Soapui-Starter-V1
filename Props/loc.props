@@ -1,0 +1,3 @@
+CustomerId=12345
+ServiceURL=http://localhost:7800/customer/getdetails/V1
+DataFile=/Props/loc-data.csv
