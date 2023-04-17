@@ -1,7 +1,7 @@
 # Soapui-Starter-V1
 A sample SOAPUI project to demonstrate how to test a web-service using data from CSV &amp; external property file. 
 
-# How to use
+# How to use this project?
 Clone the project locally
 Import the project, apply properties(you'll need to run a local instance of the Customer Service)
 
